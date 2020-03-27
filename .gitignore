@@ -21,5 +21,10 @@
 /minigzip64
 /minigzipsh
 /zlib.pc
+/configure.log
 
 .DS_Store
+
+.vs
+intermediate/
+output/
