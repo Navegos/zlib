@@ -349,10 +349,39 @@
 #    ifdef FAR
 #      undef FAR
 #    endif
-#    include <windows.h>
+#if defined(_WINDOWS) || defined(_WIN32) || defined(_WIN64) || defined(_M_ARM) || defined(_XBOX_ONE) || defined(_M_PPC)
+    // Exclude rarely-used stuff from Windows headers
+#ifndef VC_EXTRALEAN
+#define VC_EXTRALEAN
+#endif
+#ifndef WIN32_LEAN_AND_MEAN
+#define WIN32_LEAN_AND_MEAN
+#endif
+#ifndef NOMINMAX
+#define NOMINMAX
+#endif
+#ifndef STRICT
+#define STRICT
+#endif
+#ifndef _WINDOWS_
+# pragma warning( push )
+#if __INTEL_COMPILER
+# pragma warning( disable: 271 310 )
+#elif defined(_MSC_VER)
+//#include "Runtime/Core/Public/Windows/AllowWindowsPlatformTypes.h"
+#pragma warning(disable : 4005)
+#endif
+#pragma pack(push)
+#pragma pack(8)
+# include <windows.h>
+#pragma pack (pop)
+# pragma warning( pop )
+//#include "Runtime/Core/Public/Windows/HideWindowsPlatformTypes.h"
+#endif
+#endif
      /* No need for _export, use ZLIB.DEF instead. */
      /* For complete Windows compatibility, use WINAPI, not __stdcall. */
-#    define ZEXPORT WINAPI
+#    define ZEXPORT WINAPIV
 #    ifdef WIN32
 #      define ZEXPORTVA WINAPIV
 #    else
