@@ -1,0 +1,46 @@
+#include <windows.h>
+
+#define PACKAGE_VERSION_MAJOR 1
+#define PACKAGE_VERSION_MINOR 2
+#define PACKAGE_VERSION_SUBMINOR 11
+#define PACKAGE_VERSION_STRING "1.2.11"
+
+#define PACKAGE_NAME "zlib"
+
+#ifdef _DEBUG
+#define PACKAGE_DEBUG "_debug"
+#else
+#define PACKAGE_DEBUG ""
+#endif
+
+#define IDR_VERSION1  1
+IDR_VERSION1	VERSIONINFO	MOVEABLE IMPURE LOADONCALL DISCARDABLE
+  FILEVERSION PACKAGE_VERSION_MAJOR,PACKAGE_VERSION_MINOR,PACKAGE_VERSION_SUBMINOR,0
+  PRODUCTVERSION PACKAGE_VERSION_MAJOR,PACKAGE_VERSION_MINOR,PACKAGE_VERSION_SUBMINOR,0
+  FILEFLAGSMASK	VS_FFI_FILEFLAGSMASK
+  FILEFLAGS	0
+  FILEOS	VOS_DOS_WINDOWS32
+  FILETYPE	VFT_DLL
+  FILESUBTYPE	0	// not used
+BEGIN
+  BLOCK "StringFileInfo"
+  BEGIN
+    BLOCK "040904E4"
+    //language ID = U.S. English, char set = Windows, Multilingual
+
+    BEGIN
+      VALUE "FileDescription", "zlib data compression and ZIP file I/O library\0"
+      VALUE "FileVersion",	PACKAGE_VERSION_STRING "\0"
+      VALUE "InternalName",	PACKAGE_NAME PACKAGE_DEBUG ".dll\0"
+      VALUE "OriginalFilename",	PACKAGE_NAME PACKAGE_DEBUG ".dll\0"
+      VALUE "ProductName",	"zlib\0"
+      VALUE "ProductVersion", PACKAGE_VERSION_STRING "\0"
+      VALUE "Comments","DLL support by Alessandro Iacopetti & Gilles Vollant\0"
+      VALUE "LegalCopyright", "(C) 1995-2019 Jean-loup Gailly & Mark Adler\0"
+    END
+  END
+  BLOCK "VarFileInfo"
+  BEGIN
+    VALUE "Translation", 0x0409, 1252
+  END
+END

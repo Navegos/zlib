@@ -17,7 +17,7 @@ TOP = .
 LOC =
 
 # variables
-STATICLIB = zlib_a.lib
+STATICLIB = zlibstatic.lib
 SHAREDLIB = zlib.dll
 IMPLIB    = zdll.lib
 
@@ -26,7 +26,7 @@ AS = ml
 LD = link
 AR = lib
 RC = rc
-CFLAGS  = -nologo -MD -W3 -O2 -Oy- -Zi -Fd"zlib_a" $(LOC)
+CFLAGS  = -nologo -MD -W3 -O2 -Oy- -Zi -Fd"zlibstatic" $(LOC)
 WFLAGS  = -D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE
 ASFLAGS = -coff -Zi $(LOC)
 LDFLAGS = -nologo -debug -incremental:no -opt:ref

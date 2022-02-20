@@ -28,3 +28,6 @@
 .vs
 intermediate/
 output/
+*.obj
+*.lst
+*.vcxproj.user
